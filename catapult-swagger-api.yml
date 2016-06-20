@@ -1,0 +1,18 @@
+swagger: '2.0'
+info:
+  title: Bandwidth API
+  description: The bandwidth application platform specification
+  termsOfService: https://catapult.inetwork.com/pages/tos/termsOfService.jsf
+  contact:
+    name: API Support
+    url: https://catapult.inetwork.com/pages/contact.jsf
+    email: openapi@bandwidth.com
+  version: 1.0.0
+host: api.catapult.inetwork.com
+basePath: /v1
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /account
