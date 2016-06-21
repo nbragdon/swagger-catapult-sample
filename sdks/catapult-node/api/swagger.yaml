@@ -1,0 +1,73 @@
+---
+swagger: "2.0"
+info:
+  description: "The bandwidth application platform specification"
+  version: "1.0.0"
+  title: "Bandwidth API"
+  termsOfService: "https://catapult.inetwork.com/pages/tos/termsOfService.jsf"
+  contact:
+    name: "API Support"
+    url: "https://catapult.inetwork.com/pages/contact.jsf"
+    email: "openapi@bandwidth.com"
+host: "api.catapult.inetwork.com"
+basePath: "/v1"
+schemes:
+- "https"
+produces:
+- "application/json"
+paths:
+  /users/{userId}/account:
+    get:
+      operationId: "usersUserIdAccountGET"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "Id of the user you want account information for"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "account information"
+          schema:
+            $ref: "#/definitions/Account"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+securityDefinitions:
+  basicAuth:
+    description: "HTTP Basic Authentication. Works over `HTTP` and `HTTPS`"
+    type: "basic"
+definitions:
+  Account:
+    type: "object"
+    properties:
+      balance:
+        type: "string"
+        description: "The current amount money you have to spend, in US dollars"
+      accountType:
+        type: "string"
+        description: "How payments for your account are done"
+        enum:
+        - "Pre-paid"
+        - "Post-paid"
+  ErrorModel:
+    type: "object"
+    properties:
+      category:
+        type: "string"
+      code:
+        type: "string"
+      message:
+        type: "string"
+      details:
+        type: "array"
+        items:
+          $ref: "#/definitions/ErrorModel_details"
+  ErrorModel_details:
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"

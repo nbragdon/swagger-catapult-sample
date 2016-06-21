@@ -1,0 +1,16 @@
+{
+  "name": "bandwidth-api",
+  "version": "1.0.0",
+  "description": "The bandwidth application platform specification",
+  "main": "index.js",
+  "keywords": [
+    "swagger"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "swagger-tools": "0.9.*"
+  }
+}

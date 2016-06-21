@@ -10,9 +10,61 @@ info:
   version: 1.0.0
 host: api.catapult.inetwork.com
 basePath: /v1
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: HTTP Basic Authentication. Works over `HTTP` and `HTTPS`
 schemes:
   - https
 produces:
   - application/json
 paths:
-  /account
+  /users/{userId}/account:
+    get:
+      parameters:
+        - name: userId
+          in: path
+          description: Id of the user you want account information for
+          type: string
+          required: true
+      responses:
+        200:
+          description: account information
+          schema:
+            $ref: '#/definitions/Account'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+definitions:
+  Account:
+    type: object
+    properties:
+      balance:
+        type: string
+        description: The current amount money you have to spend, in US dollars
+      accountType:
+        type: string
+        description: How payments for your account are done
+        enum:
+          - Pre-paid
+          - Post-paid
+  ErrorModel:
+    type: object
+    properties:
+      category:
+        type: string
+      code:
+        type: string
+      message:
+        type: string
+      details:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            value:
+              type: string
