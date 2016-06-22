@@ -1,20 +1,24 @@
 var BandwidthApi = require('../../sdks/catapult-javascript/src');
-var config = require('config.json');
+var config = require('./config.json');
 
-var defaultClient = BandwidthApi.ApiClient.default;
+var api = new BandwidthApi.DefaultApi();
 
 // Configure HTTP basic authorization: basicAuth
-var basicAuth = defaultClient.authentications['basicAuth'];
+var basicAuth = api.apiClient.authentications['basicAuth'];
 basicAuth.username = config.username;
 basicAuth.password = config.password;
 
-var api = new BandwidthApi.DefaultApi()
+
+console.log('api', api);
+
+var userId = "userId_example"; // {String} Id of the user you want account information for
+
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully. Returned data: ', data);
   }
 };
 api.usersUserIdAccountGet(config.userId, callback);
