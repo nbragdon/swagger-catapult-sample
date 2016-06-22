@@ -6,6 +6,11 @@ var userId = "u-jbobr3ft53e34qrhotkunia"; // {String} Id of the user you want ac
 var apiToken = "t-g7byoakaidhk6eqk55hs4oq";
 var apiSecret = "lwiaugrckjp4yklpcopuv3oll467tbb6nr2g6di";
 
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = apiToken;
+basicAuth.password = apiSecret;
+
 
 var callback = function(error, data, response) {
   if (error) {
