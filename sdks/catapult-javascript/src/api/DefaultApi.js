@@ -64,7 +64,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['basicAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Account;

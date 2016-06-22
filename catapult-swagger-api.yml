@@ -21,6 +21,8 @@ produces:
 paths:
   /users/{userId}/account:
     get:
+      security:
+        - basicAuth: []
       parameters:
         - name: userId
           in: path

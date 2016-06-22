@@ -16,6 +16,12 @@ Method | HTTP request | Description
 ### Example
 ```javascript
 var BandwidthApi = require('bandwidth-api');
+var defaultClient = BandwidthApi.ApiClient.default;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var apiInstance = new BandwidthApi.DefaultApi()
 
@@ -44,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[basicAuth](../README.md#basicAuth)
 
 ### HTTP reuqest headers
 
